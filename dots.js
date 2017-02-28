@@ -25,6 +25,6 @@ canvas.addEventListener("click", function(e) {
 var clearBut = document.getElementById("clear");
 clearBut.addEventListener("click", function(e) {
     e.preventDefault();
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    lastcoos = null;
+    canvas.innerHTML = '';
+    lastline = null;
 });
