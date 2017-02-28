@@ -1,21 +1,25 @@
-var canvas = document.getElementById("dotcanvas");
-var ctx = canvas.getContext("2d");
-ctx.fillStyle = "#ff0000";
-lastcoos = null;
+var canvas = document.getElementById("svgcanvas");
+var ns = "http://www.w3.org/2000/svg"
+lastline = null;
 canvas.addEventListener("click", function(e) {
     e.preventDefault();
-    if(lastcoos === null) {
-        lastcoos = [e.offsetX, e.offsetY];
+    if(lastline !== null) {
+	lastline.setAttribute("x2", e.offsetX);
+	lastline.setAttribute("y2", e.offsetY);
+	canvas.appendChild(lastline);
     }
-    ctx.beginPath();
-    ctx.moveTo(lastcoos[0], lastcoos[1]);
-    ctx.lineTo(e.offsetX, e.offsetY);
-    ctx.stroke();
-    ctx.beginPath();
-    ctx.arc(e.offsetX, e.offsetY, 25, 0, 2*Math.PI);
-    ctx.fill();
-    ctx.stroke();
-    lastcoos = [e.offsetX, e.offsetY];
+    var circ = document.createElementNS(ns, "circle");
+    circ.setAttribute("cx", e.offsetX);
+    circ.setAttribute("cy", e.offsetY);
+    circ.setAttribute("r", 25);
+    circ.setAttribute("fill", "red");
+    circ.setAttribute("stroke", "black");
+    canvas.appendChild(circ);
+    var line = document.createElementNS(ns, "line");
+    lastline = line;
+    line.setAttribute("x1", e.offsetX);
+    line.setAttribute("y1", e.offsetY);
+    line.setAttribute("stroke", "black");
 });
                      
 var clearBut = document.getElementById("clear");
