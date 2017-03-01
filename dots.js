@@ -4,9 +4,9 @@ lastline = null;
 canvas.addEventListener("click", function(e) {
     e.preventDefault();
     if(lastline !== null) {
-	lastline.setAttribute("x2", e.offsetX);
-	lastline.setAttribute("y2", e.offsetY);
-	canvas.appendChild(lastline);
+    	lastline.setAttribute("x2", e.offsetX);
+    	lastline.setAttribute("y2", e.offsetY);
+    	canvas.appendChild(lastline);
     }
     var circ = document.createElementNS(ns, "circle");
     circ.setAttribute("cx", e.offsetX);
@@ -21,7 +21,7 @@ canvas.addEventListener("click", function(e) {
     line.setAttribute("y1", e.offsetY);
     line.setAttribute("stroke", "black");
 });
-                     
+
 var clearBut = document.getElementById("clear");
 clearBut.addEventListener("click", function(e) {
     e.preventDefault();
